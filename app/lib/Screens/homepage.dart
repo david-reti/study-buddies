@@ -2,12 +2,9 @@ import 'package:app/Screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:app/Screens/register.dart';
 
-
-
-
 class homePage extends StatelessWidget {
-  Color buttonColor = const Color(0xffFF4D6D);
-  Color textColor = const Color(0xffFFF0F3);
+  final Color buttonColor = const Color(0xffFF4D6D);
+  final Color textColor = const Color(0xffFFF0F3);
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +33,12 @@ class homePage extends StatelessWidget {
                     elevation: 10,
                   ),
                   onPressed: () {
+                    // if the login screen is selected, that navigation will show
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return Login();
+                          return const LoginScreen();
                         },
                       ),
                     );
@@ -63,7 +61,7 @@ class homePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return MyApp();
+                          return const RegisterScreen();
                         },
                       ),
                     );
