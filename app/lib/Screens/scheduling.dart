@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/data/weekdays.dart';
+import 'package:app/models/meeting_time.dart';
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({Key? key}) : super(key: key);
@@ -14,8 +15,8 @@ class _SchedulScreenState extends State<ScheduleScreen> {
 
   bool initialized = false;
 
-  // Only the day and time fields are relevant
-  List<DateTime> _selectedMeetingTimes = [];
+  List<MeetingTime> selectedMeetingTimes = [];
+  Color buttonColor = const Color(0xffFF4D6D);
 
   List<bool> daySelected = [
     false,
@@ -26,49 +27,103 @@ class _SchedulScreenState extends State<ScheduleScreen> {
   ];
 
   void saveTimeslot() {}
-  void changeChecked(bool? val) {}
-  List<Widget> generateAvailableTimes(bool generateAll) {
+  List<Widget> availableTimes = [];
+  List<Widget> generateAvailableTimes() {
+    bool generateAll =
+        !daySelected.reduce((value, element) => value || element);
+
     List<Widget> toReturn = [];
     for (int i = 0; i < 5; i++) {
       if (daySelected[i] || generateAll) {
-        toReturn.add(timeSlotTile("${dayNames[i]} Morning (10:30 - 11:30)"));
-        toReturn.add(timeSlotTile("${dayNames[i]} Afternoon (2:30 - 3:30)"));
-        toReturn.add(timeSlotTile("${dayNames[i]} Evening (5:30 - 6:30)"));
-        toReturn.add(timeSlotTile("${dayNames[i]} Night (8:30 - 9:30)"));
+        toReturn.add(timeSlotTile(
+            updateTimeslot,
+            "${dayNames[i]} Morning (10:30 - 11:30)",
+            timeslotSelected(i, 0),
+            i,
+            0));
+        toReturn.add(timeSlotTile(
+            updateTimeslot,
+            "${dayNames[i]} Afternoon (2:30 - 3:30)",
+            timeslotSelected(i, 1),
+            i,
+            1));
+        toReturn.add(timeSlotTile(
+            updateTimeslot,
+            "${dayNames[i]} Evening (5:30 - 6:30)",
+            timeslotSelected(i, 2),
+            i,
+            2));
+        toReturn.add(timeSlotTile(
+            updateTimeslot,
+            "${dayNames[i]} Night (8:30 - 9:30)",
+            timeslotSelected(i, 3),
+            i,
+            3));
       }
     }
     return toReturn;
   }
 
-  List<Widget> availableTimes = [];
+  void updateTimeslot(int dayNum, int timeNum) {
+    setState(() {
+      int added = -1;
+      for (int i = 0; i < selectedMeetingTimes.length; i++) {
+        if (selectedMeetingTimes[i].dayNum == dayNum &&
+            selectedMeetingTimes[i].timeNum == timeNum) {
+          added = i;
+        }
+      }
+
+      if (added != -1) {
+        selectedMeetingTimes.removeAt(added);
+      } else {
+        selectedMeetingTimes.add(MeetingTime(dayNum, timeNum));
+      }
+    });
+  }
+
+  void regenerate() {
+    setState(() {
+      availableTimes = generateAvailableTimes();
+    });
+  }
+
+  void selectDay(int dayNum) {
+    daySelected[dayNum] = !daySelected[dayNum];
+    regenerate();
+  }
+
+  bool timeslotSelected(dayNum, timeNum) {
+    bool found = false;
+    for (int i = 0; i < selectedMeetingTimes.length; i++) {
+      if (selectedMeetingTimes[i].dayNum == dayNum &&
+          selectedMeetingTimes[i].timeNum == timeNum) {
+        found = true;
+      }
+    }
+    return found;
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (!initialized) {
-      setState(() {
-        availableTimes = generateAvailableTimes(true);
-      });
-      initialized = true;
-    }
-
+    availableTimes = generateAvailableTimes();
     return Column(
       children: [
-        const Text('Select the days when you are available'),
+        const Padding(
+          padding: EdgeInsets.only(top: 8.0),
+          child: Text(
+            'Select the times when you are available',
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Wrap(
             children: [
               for (int i = 0; i < 5; i++)
-                dayFilterChip(
-                  i,
-                  daySelected[i],
-                  (val) => {
-                    setState(() {
-                      daySelected[i] = !daySelected[i];
-                      availableTimes = generateAvailableTimes(false);
-                    }),
-                  },
-                )
+                DayFilter(i, daySelected[i], selectDay)
             ],
             alignment: WrapAlignment.center,
             spacing: 10.0,
@@ -83,9 +138,9 @@ class _SchedulScreenState extends State<ScheduleScreen> {
           children: [
             Expanded(
               child: ElevatedButton(
-                onPressed: saveTimeslot,
-                child: const Text('Save'),
-              ),
+                  onPressed: saveTimeslot,
+                  child: const Text('Save'),
+                  style: ElevatedButton.styleFrom(primary: buttonColor)),
             ),
           ],
         ),
@@ -94,23 +149,41 @@ class _SchedulScreenState extends State<ScheduleScreen> {
   }
 }
 
-Widget dayFilterChip(
-    int dayNum, bool selected, void Function(bool?) selectFunction) {
-  return (FilterChip(
-    selected: selected,
-    onSelected: selectFunction,
-    label: Text(dayNames[dayNum]),
-  ));
+class DayFilter extends StatefulWidget {
+  DayFilter(this.dayNum, this.selected, this.onSelected, {Key? key})
+      : super(key: key);
+  bool selected = false;
+  Function onSelected;
+  int dayNum = 0;
+
+  @override
+  State<DayFilter> createState() => _DayFilterState();
 }
 
-Widget timeSlotTile(String title) {
+class _DayFilterState extends State<DayFilter> {
+  @override
+  Widget build(BuildContext context) {
+    return (FilterChip(
+      selected: widget.selected,
+      onSelected: (val) {
+        widget.selected = !widget.selected;
+        widget.onSelected(widget.dayNum);
+      },
+      label: Text(dayNames[widget.dayNum]),
+    ));
+  }
+}
+
+Widget timeSlotTile(Function(int, int) update, String title, bool selected,
+    int dayNum, int timeNum) {
   return Card(
     child: ListTile(
       title: Text(title),
       trailing: Checkbox(
-        value: false,
-        onChanged: (val) {},
-      ),
+          value: selected,
+          onChanged: (val) {
+            update(dayNum, timeNum);
+          }),
     ),
   );
 }
