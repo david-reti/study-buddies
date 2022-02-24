@@ -34,85 +34,104 @@ class LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 150),
-      child: Form(
-        key: _key,
+    return Form(
+      key: _key,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
         child: Column(
-          children: [
-            const SizedBox(height: 20),
-            TextFormField(
-              controller: userEmail,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                labelText: "Email",
-              ),
-              validator: (userEmail) {
-                if (!isEmailValid(userEmail.toString())) {
-                  return 'Error email not found';
-                } else {
-                  correctEmail = true;
-                }
-              },
-            ),
-            const SizedBox(height: 24),
-            TextFormField(
-              controller: userPassword,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _pwdVisibility ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _pwdVisibility = !_pwdVisibility;
-                    });
-                  },
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                labelText: "Password",
-              ),
-              obscureText: !_pwdVisibility,
-              validator: (userPassword) {
-                if (!isPasswordValid(userPassword.toString(), userEmail.text)) {
-                  return 'Incorrect password';
-                } else {
-                  correctPass = true;
-                }
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                width: 200,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: buttonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: userEmail,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        labelText: "Email",
+                      ),
+                      validator: (userEmail) {
+                        if (!isEmailValid(userEmail.toString())) {
+                          return 'Error email not found';
+                        } else {
+                          correctEmail = true;
+                        }
+                      },
                     ),
-                    elevation: 10,
                   ),
-                  onPressed: () {
-                    if (_key.currentState!.validate()) {
-                      // functionality will be added here to navigate to the various screens once the users logged in
-                      if (correctEmail && correctPass) {}
-                      _key.currentState!.save();
-                    }
-                  },
-                  child: Text("Submit"),
-                ),
+                ],
               ),
-            ),
-          ],
-        ),
+              Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: userPassword,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _pwdVisibility
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _pwdVisibility = !_pwdVisibility;
+                            });
+                          },
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        labelText: "Password",
+                      ),
+                      obscureText: !_pwdVisibility,
+                      validator: (userPassword) {
+                        if (!isPasswordValid(
+                            userPassword.toString(), userEmail.text)) {
+                          return 'Incorrect password';
+                        } else {
+                          correctPass = true;
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: buttonColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          elevation: 10,
+                        ),
+                        onPressed: () {
+                          if (_key.currentState!.validate()) {
+                            // functionality will be added here to navigate to the various screens once the users logged in
+                            if (correctEmail && correctPass) {}
+                            _key.currentState!.save();
+                          }
+                        },
+                        child: Text("Submit"),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ]),
       ),
     );
   }

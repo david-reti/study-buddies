@@ -24,49 +24,61 @@ class homePage extends StatelessWidget {
             Container(
               width: 300,
               padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: buttonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    elevation: 10,
-                  ),
-                  onPressed: () {
-                    // if the login screen is selected, that navigation will show
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const LoginScreen();
-                        },
-                      ),
-                    );
-                  },
-                  child: Text("Login", style: TextStyle(color: textColor))),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: buttonColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            elevation: 10,
+                          ),
+                          onPressed: () {
+                            // if the login screen is selected, that navigation will show
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const LoginScreen();
+                                },
+                              ),
+                            );
+                          },
+                          child: Text("Login",
+                              style: TextStyle(color: textColor)))),
+                ],
+              ),
             ),
             Container(
               width: 300,
               padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: buttonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    elevation: 10,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const RegisterScreen();
-                        },
-                      ),
-                    );
-                  },
-                  child: Text("Register", style: TextStyle(color: textColor))),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: buttonColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            elevation: 10,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const RegisterScreen();
+                                },
+                              ),
+                            );
+                          },
+                          child: Text("Register",
+                              style: TextStyle(color: textColor)))),
+                ],
+              ),
             )
           ]),
     ));

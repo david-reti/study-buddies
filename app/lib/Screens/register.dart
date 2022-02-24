@@ -36,111 +36,137 @@ class RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 150),
-      child: Form(
-        key: _key,
+    return Form(
+      key: _key,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 20),
-            // text field for the name of the user
-            TextFormField(
-              controller: userName,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                labelText: "Name",
-              ),
-              // the validator is used to error check the users input field, if its correct we proceed otherwise we dont accept input
-              validator: (userName) {
-                if (userName == null || userName.isEmpty) {
-                  return 'Please enter your first and last name';
-                } else if (!isNameValid(userName)) {
-                  return 'Please enter a valid name containing only letters';
-                } else {
-                  // if the users input was correct we come here
-                  correctName = true;
-                }
-              },
-            ),
-            const SizedBox(height: 20),
-            TextFormField(
-              controller: userEmail,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                labelText: "Email",
-              ),
-              validator: (userEmail) {
-                if (userEmail == null ||
-                    userEmail.isEmpty ||
-                    !isEmailValid(userEmail)) {
-                  return 'Please enter a University of Guelph email';
-                } else {
-                  correctEmail = true;
-                }
-              },
-            ),
-            const SizedBox(height: 24),
-            TextFormField(
-              controller: userPassword,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    // if the user wants to hide/show their password they'll toggle this icon
-                    _pwdVisibility ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _pwdVisibility = !_pwdVisibility;
-                    });
-                  },
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                labelText: "Password",
-              ),
-              obscureText: !_pwdVisibility,
-              validator: (userPassword) {
-                if (userPassword == null || userPassword.isEmpty) {
-                  return 'Please enter a password';
-                } else {
-                  correctPass = true;
-                }
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                width: 200,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: buttonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+            Row(
+              children: [
+                Expanded(
+                  child:
+                      // text field for the name of the user
+                      TextFormField(
+                    controller: userName,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      labelText: "Name",
                     ),
-                    elevation: 10,
-                  ),
-                  onPressed: () {
-                    // validating all of the forms' input here
-                    if (_key.currentState!.validate()) {
-                      if (correctName && correctEmail && correctPass) {
-                        // if all of the input is correct, we send them an alert dialog 
-                        _displayTextInputDialog(context);
+                    // the validator is used to error check the users input field, if its correct we proceed otherwise we dont accept input
+                    validator: (userName) {
+                      if (userName == null || userName.isEmpty) {
+                        return 'Please enter your first and last name';
+                      } else if (!isNameValid(userName)) {
+                        return 'Please enter a valid name containing only letters';
+                      } else {
+                        // if the users input was correct we come here
+                        correctName = true;
                       }
-                      _key.currentState!.save();
-                    }
-                  },
-                  child: Text("Submit"),
+                    },
+                  ),
                 ),
-              ),
+              ],
+            ),
+            Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    controller: userEmail,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.email),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      labelText: "Email",
+                    ),
+                    validator: (userEmail) {
+                      if (userEmail == null ||
+                          userEmail.isEmpty ||
+                          !isEmailValid(userEmail)) {
+                        return 'Please enter a University of Guelph email';
+                      } else {
+                        correctEmail = true;
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    controller: userPassword,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          // if the user wants to hide/show their password they'll toggle this icon
+                          _pwdVisibility
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _pwdVisibility = !_pwdVisibility;
+                          });
+                        },
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      labelText: "Password",
+                    ),
+                    obscureText: !_pwdVisibility,
+                    validator: (userPassword) {
+                      if (userPassword == null || userPassword.isEmpty) {
+                        return 'Please enter a password';
+                      } else {
+                        correctPass = true;
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: buttonColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        elevation: 10,
+                      ),
+                      onPressed: () {
+                        // validating all of the forms' input here
+                        if (_key.currentState!.validate()) {
+                          if (correctName && correctEmail && correctPass) {
+                            // if all of the input is correct, we send them an alert dialog
+                            _displayTextInputDialog(context);
+                          }
+                          _key.currentState!.save();
+                        }
+                      },
+                      child: Text("Submit"),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
