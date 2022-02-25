@@ -9,22 +9,22 @@ class homePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Align(
-                alignment: Alignment.center,
-                child: Text("Study Buddies",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: buttonColor,
-                        fontSize: 30))),
-            Container(
-              width: 300,
-              padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
-              child: Row(
+        body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(50),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Align(
+                  alignment: Alignment.center,
+                  child: Text("Study Buddies",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: buttonColor,
+                          fontSize: 30))),
+              Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+              Row(
                 children: [
                   Expanded(
                       child: ElevatedButton(
@@ -50,11 +50,7 @@ class homePage extends StatelessWidget {
                               style: TextStyle(color: textColor)))),
                 ],
               ),
-            ),
-            Container(
-              width: 300,
-              padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
-              child: Row(
+              Row(
                 children: [
                   Expanded(
                       child: ElevatedButton(
@@ -79,8 +75,8 @@ class homePage extends StatelessWidget {
                               style: TextStyle(color: textColor)))),
                 ],
               ),
-            )
-          ]),
+            ]),
+      ),
     ));
   }
 }

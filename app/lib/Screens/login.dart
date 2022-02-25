@@ -7,6 +7,15 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 240, 243, 1),
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Color.fromRGBO(255, 77, 109, 1)),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
       body: const Login(),
     );
   }
@@ -35,105 +44,106 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _key,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
+        key: _key,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: TextFormField(
-                      controller: userEmail,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.email),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        labelText: "Email",
-                      ),
-                      validator: (userEmail) {
-                        if (!isEmailValid(userEmail.toString())) {
-                          return 'Error email not found';
-                        } else {
-                          correctEmail = true;
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      controller: userPassword,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _pwdVisibility
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: Colors.black,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: userEmail,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.email),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            labelText: "Email",
                           ),
-                          onPressed: () {
-                            setState(() {
-                              _pwdVisibility = !_pwdVisibility;
-                            });
+                          validator: (userEmail) {
+                            if (!isEmailValid(userEmail.toString())) {
+                              return 'Error email not found';
+                            } else {
+                              correctEmail = true;
+                            }
                           },
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        labelText: "Password",
                       ),
-                      obscureText: !_pwdVisibility,
-                      validator: (userPassword) {
-                        if (!isPasswordValid(
-                            userPassword.toString(), userEmail.text)) {
-                          return 'Incorrect password';
-                        } else {
-                          correctPass = true;
-                        }
-                      },
-                    ),
+                    ],
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: buttonColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
+                  Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: userPassword,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _pwdVisibility
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Colors.black,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _pwdVisibility = !_pwdVisibility;
+                                });
+                              },
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            labelText: "Password",
                           ),
-                          elevation: 10,
+                          obscureText: !_pwdVisibility,
+                          validator: (userPassword) {
+                            if (!isPasswordValid(
+                                userPassword.toString(), userEmail.text)) {
+                              return 'Incorrect password';
+                            } else {
+                              correctPass = true;
+                            }
+                          },
                         ),
-                        onPressed: () {
-                          if (_key.currentState!.validate()) {
-                            // functionality will be added here to navigate to the various screens once the users logged in
-                            if (correctEmail && correctPass) {}
-                            _key.currentState!.save();
-                          }
-                        },
-                        child: Text("Submit"),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ]),
-      ),
-    );
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: buttonColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              elevation: 10,
+                            ),
+                            onPressed: () {
+                              if (_key.currentState!.validate()) {
+                                // functionality will be added here to navigate to the various screens once the users logged in
+                                if (correctEmail && correctPass) {}
+                                _key.currentState!.save();
+                              }
+                            },
+                            child: Text("Submit"),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ]),
+          ),
+        ));
   }
 
   bool isEmailValid(String email) {

@@ -7,6 +7,15 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 240, 243, 1),
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Color.fromRGBO(255, 77, 109, 1)),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
       body: const Register(),
     );
   }
@@ -37,141 +46,142 @@ class RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _key,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
+        key: _key,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
-                  child:
-                      // text field for the name of the user
-                      TextFormField(
-                    controller: userName,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      labelText: "Name",
-                    ),
-                    // the validator is used to error check the users input field, if its correct we proceed otherwise we dont accept input
-                    validator: (userName) {
-                      if (userName == null || userName.isEmpty) {
-                        return 'Please enter your first and last name';
-                      } else if (!isNameValid(userName)) {
-                        return 'Please enter a valid name containing only letters';
-                      } else {
-                        // if the users input was correct we come here
-                        correctName = true;
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
-            Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    controller: userEmail,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      labelText: "Email",
-                    ),
-                    validator: (userEmail) {
-                      if (userEmail == null ||
-                          userEmail.isEmpty ||
-                          !isEmailValid(userEmail)) {
-                        return 'Please enter a University of Guelph email';
-                      } else {
-                        correctEmail = true;
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
-            Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    controller: userPassword,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          // if the user wants to hide/show their password they'll toggle this icon
-                          _pwdVisibility
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.black,
+                Row(
+                  children: [
+                    Expanded(
+                      child:
+                          // text field for the name of the user
+                          TextFormField(
+                        controller: userName,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.person),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          labelText: "Name",
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _pwdVisibility = !_pwdVisibility;
-                          });
+                        // the validator is used to error check the users input field, if its correct we proceed otherwise we dont accept input
+                        validator: (userName) {
+                          if (userName == null || userName.isEmpty) {
+                            return 'Please enter your first and last name';
+                          } else if (!isNameValid(userName)) {
+                            return 'Please enter a valid name containing only letters';
+                          } else {
+                            // if the users input was correct we come here
+                            correctName = true;
+                          }
                         },
                       ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      labelText: "Password",
                     ),
-                    obscureText: !_pwdVisibility,
-                    validator: (userPassword) {
-                      if (userPassword == null || userPassword.isEmpty) {
-                        return 'Please enter a password';
-                      } else {
-                        correctPass = true;
-                      }
-                    },
-                  ),
+                  ],
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: buttonColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
+                Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: userEmail,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          labelText: "Email",
                         ),
-                        elevation: 10,
-                      ),
-                      onPressed: () {
-                        // validating all of the forms' input here
-                        if (_key.currentState!.validate()) {
-                          if (correctName && correctEmail && correctPass) {
-                            // if all of the input is correct, we send them an alert dialog
-                            _displayTextInputDialog(context);
+                        validator: (userEmail) {
+                          if (userEmail == null ||
+                              userEmail.isEmpty ||
+                              !isEmailValid(userEmail)) {
+                            return 'Please enter a University of Guelph email';
+                          } else {
+                            correctEmail = true;
                           }
-                          _key.currentState!.save();
-                        }
-                      },
-                      child: Text("Submit"),
+                        },
+                      ),
                     ),
-                  ),
+                  ],
+                ),
+                Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: userPassword,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              // if the user wants to hide/show their password they'll toggle this icon
+                              _pwdVisibility
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _pwdVisibility = !_pwdVisibility;
+                              });
+                            },
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          labelText: "Password",
+                        ),
+                        obscureText: !_pwdVisibility,
+                        validator: (userPassword) {
+                          if (userPassword == null || userPassword.isEmpty) {
+                            return 'Please enter a password';
+                          } else {
+                            correctPass = true;
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: buttonColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            elevation: 10,
+                          ),
+                          onPressed: () {
+                            // validating all of the forms' input here
+                            if (_key.currentState!.validate()) {
+                              if (correctName && correctEmail && correctPass) {
+                                // if all of the input is correct, we send them an alert dialog
+                                _displayTextInputDialog(context);
+                              }
+                              _key.currentState!.save();
+                            }
+                          },
+                          child: Text("Submit"),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 
   // the email needs to be a valid University of Guelph email
