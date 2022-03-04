@@ -2,7 +2,7 @@ import 'package:app/Screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:app/Screens/register.dart';
 
-class homePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   final Color buttonColor = const Color(0xffFF4D6D);
   final Color textColor = const Color(0xffFFF0F3);
 
