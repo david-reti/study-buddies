@@ -107,44 +107,46 @@ class _SchedulScreenState extends State<ScheduleScreen> {
   @override
   Widget build(BuildContext context) {
     availableTimes = generateAvailableTimes();
-    return Column(
-      children: [
-        const Padding(
-          padding: EdgeInsets.only(top: 8.0),
-          child: Text(
-            'Select the times when you are available',
-            style: TextStyle(
-              fontSize: 16,
+    return Scaffold(
+      body: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 8.0),
+            child: Text(
+              'Select the times when you are available',
+              style: TextStyle(
+                fontSize: 16,
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Wrap(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Wrap(
+              children: [
+                for (int i = 0; i < 5; i++)
+                  DayFilter(i, daySelected[i], selectDay)
+              ],
+              alignment: WrapAlignment.center,
+              spacing: 10.0,
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              children: availableTimes,
+            ),
+          ),
+          Row(
             children: [
-              for (int i = 0; i < 5; i++)
-                DayFilter(i, daySelected[i], selectDay)
+              Expanded(
+                child: ElevatedButton(
+                    onPressed: saveTimeslot,
+                    child: const Text('Save'),
+                    style: ElevatedButton.styleFrom(primary: buttonColor)),
+              ),
             ],
-            alignment: WrapAlignment.center,
-            spacing: 10.0,
           ),
-        ),
-        Expanded(
-          child: ListView(
-            children: availableTimes,
-          ),
-        ),
-        Row(
-          children: [
-            Expanded(
-              child: ElevatedButton(
-                  onPressed: saveTimeslot,
-                  child: const Text('Save'),
-                  style: ElevatedButton.styleFrom(primary: buttonColor)),
-            ),
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
