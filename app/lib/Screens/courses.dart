@@ -27,9 +27,10 @@ class _CoursesState extends State<Courses> {
     // TODO: implement build
     return new MaterialApp(
         title: "ListView.builder",
-        theme: new ThemeData(
+        color: Color.fromRGBO(255, 240, 243, 1.0),
+        /*theme: new ThemeData(
             //primarySwatch: Colors.red
-            primarySwatch: Colors.red),
+            primarySwatch: Colors.red),*/
         debugShowCheckedModeBanner: false,
         home: new ListViewBuilder());
   }
@@ -42,6 +43,8 @@ class ListViewBuilder extends StatefulWidget {
 
 class _ListViewBuilderState extends State<ListViewBuilder> {
   final Color boxOutColor = const Color(0xffFF4D6D);
+  final Color backgroundColor = const Color(0xffFFF0F3);
+
   final items = [
     'Accounting',
     'Agriculture',
@@ -56,6 +59,7 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: backgroundColor,
         actions: <Widget>[
           IconButton(
               icon: Icon(
@@ -65,10 +69,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
               onPressed: () {})
         ],
         title: Text(
-          "Courses",
+          "Course Selection",
           style: TextStyle(
-            letterSpacing: 2,
-          ),
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
+              color: Colors.black),
         ),
       ),
       body: ListView(
@@ -107,8 +112,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -127,8 +135,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -148,8 +159,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -168,8 +182,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -188,8 +205,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -208,8 +228,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -228,8 +251,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -248,8 +274,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -268,8 +297,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -288,8 +320,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -308,8 +343,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -328,8 +366,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -348,8 +389,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
@@ -368,8 +412,11 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text('Join'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                  ),
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text('Join', style: TextStyle(color: Colors.black)),
                   //color: Colors.amber,
                 ),
               )),
