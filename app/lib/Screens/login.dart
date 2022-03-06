@@ -131,7 +131,7 @@ class LoginState extends State<Login> {
                             ),
                             onPressed: () {
                               if (_key.currentState!.validate()) {
-                                // functionality will be added here to navigate to the various screens once the users logged in
+                                // if password and email are correct we goto Courses screen
                                 if (correctEmail && correctPass) {
                                   Navigator.push(
                                     context,
@@ -156,7 +156,7 @@ class LoginState extends State<Login> {
           ),
         ));
   }
-
+  // used to check if email is present in our dummy database (sampleusers.dart)
   bool isEmailValid(String email) {
     for (int i = 0; i < sampleusers.length; i++) {
       if (sampleusers[i]["email"] == email) {
@@ -165,7 +165,7 @@ class LoginState extends State<Login> {
     }
     return false;
   }
-
+  // used to check if password is present in our dummy database (sampleusers.dart)
   bool isPasswordValid(String password, String email) {
     for (int i = 0; i < sampleusers.length; i++) {
       if (sampleusers[i]["email"] == email &&
