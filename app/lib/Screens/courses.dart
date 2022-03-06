@@ -56,14 +56,14 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        /*actions: <Widget>[
+        actions: <Widget>[
           IconButton(
               icon: Icon(
                 Icons.settings,
                 color: Colors.black,
               ),
               onPressed: () {})
-        ],*/
+        ],
         title: Text(
           "Courses",
           style: TextStyle(
