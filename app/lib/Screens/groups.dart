@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'members.dart';
 
-void main() {
-  runApp(GroupList());
-}
-
 class GroupList extends StatelessWidget {
   @override
   final List<String> entries = <String>['A', 'B', 'C'];

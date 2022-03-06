@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'groups.dart';
 
-void main() {
-  runApp(const GroupMembers());
-}
-
 class GroupMembers extends StatelessWidget {
   const GroupMembers({Key? key}) : super(key: key);
 
