@@ -1,3 +1,4 @@
+import 'package:app/Screens/courses.dart';
 import 'package:flutter/material.dart';
 import 'package:app/data/sampleusers.dart';
 
@@ -131,11 +132,21 @@ class LoginState extends State<Login> {
                             onPressed: () {
                               if (_key.currentState!.validate()) {
                                 // functionality will be added here to navigate to the various screens once the users logged in
-                                if (correctEmail && correctPass) {}
+                                if (correctEmail && correctPass) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return Courses();
+                                      },
+                                    ),
+                                  );
+                                }
                                 _key.currentState!.save();
                               }
                             },
-                            child: Text("Submit"),
+                            child: Text("Login",
+                              style: TextStyle(color: textColor))
                           ),
                         ),
                       ),
