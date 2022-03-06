@@ -155,25 +155,27 @@ class RegisterState extends State<Register> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: buttonColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
+                            style: ElevatedButton.styleFrom(
+                              primary: buttonColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              elevation: 10,
                             ),
-                            elevation: 10,
-                          ),
-                          onPressed: () {
-                            // validating all of the forms' input here
-                            if (_key.currentState!.validate()) {
-                              if (correctName && correctEmail && correctPass) {
-                                // if all of the input is correct, we send them an alert dialog
-                                _displayTextInputDialog(context);
+                            onPressed: () {
+                              // validating all of the forms' input here
+                              if (_key.currentState!.validate()) {
+                                if (correctName &&
+                                    correctEmail &&
+                                    correctPass) {
+                                  // if all of the input is correct, we send them an alert dialog
+                                  _displayTextInputDialog(context);
+                                }
+                                _key.currentState!.save();
                               }
-                              _key.currentState!.save();
-                            }
-                          },
-                          child: Text("Submit"),
-                        ),
+                            },
+                            child: Text("Register",
+                                style: TextStyle(color: textColor))),
                       ),
                     ),
                   ],
@@ -208,14 +210,14 @@ class RegisterState extends State<Register> {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return Login();
+                  return LoginScreen();
                 },
               ),
             );
           });
           return AlertDialog(
             title: Text(
-                'A one-time password has been sent to ${userEmail.text}, please enter it here to comeplete verification'),
+                'A one-time password has been sent to ${userEmail.text}, please enter it here to complete verification'),
           );
         });
   }
