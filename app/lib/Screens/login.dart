@@ -104,8 +104,7 @@ class LoginState extends State<Login> {
                           ),
                           obscureText: !_pwdVisibility,
                           validator: (userPassword) {
-                            if (!isPasswordValid(
-                                userPassword.toString(), userEmail.text)) {
+                            if (!isPasswordValid(userPassword.toString())) {
                               return 'Incorrect password';
                             } else {
                               correctPass = true;
@@ -122,32 +121,31 @@ class LoginState extends State<Login> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
                           child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: buttonColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
+                              style: ElevatedButton.styleFrom(
+                                primary: buttonColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                elevation: 10,
                               ),
-                              elevation: 10,
-                            ),
-                            onPressed: () {
-                              if (_key.currentState!.validate()) {
-                                // if password and email are correct we goto Courses screen
-                                if (correctEmail && correctPass) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return Courses();
-                                      },
-                                    ),
-                                  );
+                              onPressed: () {
+                                if (_key.currentState!.validate()) {
+                                  // if password and email are correct we goto Courses screen
+                                  if (correctEmail && correctPass) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Courses();
+                                        },
+                                      ),
+                                    );
+                                  }
+                                  _key.currentState!.save();
                                 }
-                                _key.currentState!.save();
-                              }
-                            },
-                            child: Text("Login",
-                              style: TextStyle(color: textColor))
-                          ),
+                              },
+                              child: Text("Login",
+                                  style: TextStyle(color: textColor))),
                         ),
                       ),
                     ],
@@ -156,6 +154,7 @@ class LoginState extends State<Login> {
           ),
         ));
   }
+
   // used to check if email is present in our dummy database (sampleusers.dart)
   bool isEmailValid(String email) {
     for (int i = 0; i < sampleusers.length; i++) {
@@ -165,11 +164,11 @@ class LoginState extends State<Login> {
     }
     return false;
   }
+
   // used to check if password is present in our dummy database (sampleusers.dart)
-  bool isPasswordValid(String password, String email) {
+  bool isPasswordValid(String password) {
     for (int i = 0; i < sampleusers.length; i++) {
-      if (sampleusers[i]["email"] == email &&
-          sampleusers[i]["password"] == password) {
+      if (sampleusers[i]["password"] == password) {
         return true;
       }
     }

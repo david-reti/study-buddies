@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                             elevation: 10,
                           ),
                           onPressed: () {
-                            // if the login screen is selected, that navigation will show
+                            // if login is presssed, we route to LoginScreen
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -62,6 +62,7 @@ class HomePage extends StatelessWidget {
                             elevation: 10,
                           ),
                           onPressed: () {
+                            // if Register is presssed, we route to the Registration screen
                             Navigator.push(
                               context,
                               MaterialPageRoute(
