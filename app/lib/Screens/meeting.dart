@@ -180,7 +180,10 @@ class _MeetingScreenState extends State<MeetingScreen> {
                       Expanded(
                         child: TextField(
                           decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(25),
+                                      bottomLeft: Radius.circular(25))),
                               hintText: 'Suggest Topic'),
                           controller: topicController,
                         ),
@@ -192,9 +195,10 @@ class _MeetingScreenState extends State<MeetingScreen> {
                           style: ElevatedButton.styleFrom(
                             primary: buttonColor,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            elevation: 10,
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(25),
+                                    bottomRight: Radius.circular(25))),
+                            elevation: 0,
                           ),
                           onPressed: () {
                             String toAdd = topicController.value.text;

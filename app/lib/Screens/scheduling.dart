@@ -130,15 +130,6 @@ class _SchedulScreenState extends State<ScheduleScreen> {
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: Text(
-              'Select the times when you are available',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Wrap(
