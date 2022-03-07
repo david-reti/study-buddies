@@ -3,7 +3,7 @@ import 'members.dart';
 
 class GroupList extends StatelessWidget {
   @override
-  final List<String> entries = <String>['A', 'B', 'C'];
+  final List<String> entries = <String>['Group A', 'Group B', 'Group C'];
 
   Widget build(BuildContext context) {
     return ListView.builder(
