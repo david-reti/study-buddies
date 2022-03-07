@@ -1,5 +1,6 @@
+import 'package:app/Screens/timeslots.dart';
 import 'package:flutter/material.dart';
-import 'package:app/data/weekdays.dart';
+import 'package:app/data/sampletimes.dart';
 import 'package:app/models/meeting_time.dart';
 
 class ScheduleScreen extends StatefulWidget {
@@ -26,7 +27,15 @@ class _SchedulScreenState extends State<ScheduleScreen> {
     false,
   ];
 
-  void saveTimeslot() {}
+  void saveTimeslot() {
+    // Generate query to API here
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+            builder: (context) => TimeSlotScreen(
+                [MeetingTime(1, 2, "CIS*4030")] + selectedMeetingTimes)),
+        (context) => false);
+  }
+
   List<Widget> availableTimes = [];
   List<Widget> generateAvailableTimes() {
     bool generateAll =
@@ -38,24 +47,28 @@ class _SchedulScreenState extends State<ScheduleScreen> {
         toReturn.add(timeSlotTile(
             updateTimeslot,
             "${dayNames[i]} Morning (10:30 - 11:30)",
+            "CIS*2030",
             timeslotSelected(i, 0),
             i,
             0));
         toReturn.add(timeSlotTile(
             updateTimeslot,
             "${dayNames[i]} Afternoon (2:30 - 3:30)",
+            "CIS*2030",
             timeslotSelected(i, 1),
             i,
             1));
         toReturn.add(timeSlotTile(
             updateTimeslot,
             "${dayNames[i]} Evening (5:30 - 6:30)",
+            "CIS*2030",
             timeslotSelected(i, 2),
             i,
             2));
         toReturn.add(timeSlotTile(
             updateTimeslot,
             "${dayNames[i]} Night (8:30 - 9:30)",
+            "CIS*2030",
             timeslotSelected(i, 3),
             i,
             3));
@@ -64,7 +77,7 @@ class _SchedulScreenState extends State<ScheduleScreen> {
     return toReturn;
   }
 
-  void updateTimeslot(int dayNum, int timeNum) {
+  void updateTimeslot(int dayNum, int timeNum, String title) {
     setState(() {
       int added = -1;
       for (int i = 0; i < selectedMeetingTimes.length; i++) {
@@ -77,7 +90,7 @@ class _SchedulScreenState extends State<ScheduleScreen> {
       if (added != -1) {
         selectedMeetingTimes.removeAt(added);
       } else {
-        selectedMeetingTimes.add(MeetingTime(dayNum, timeNum));
+        selectedMeetingTimes.add(MeetingTime(dayNum, timeNum, title));
       }
     });
   }
@@ -108,6 +121,13 @@ class _SchedulScreenState extends State<ScheduleScreen> {
   Widget build(BuildContext context) {
     availableTimes = generateAvailableTimes();
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Select Timeslots',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: buttonColor,
+      ),
       body: Column(
         children: [
           const Padding(
@@ -176,15 +196,15 @@ class _DayFilterState extends State<DayFilter> {
   }
 }
 
-Widget timeSlotTile(Function(int, int) update, String title, bool selected,
-    int dayNum, int timeNum) {
+Widget timeSlotTile(Function(int, int, String) update, String title,
+    String courseCode, bool selected, int dayNum, int timeNum) {
   return Card(
     child: ListTile(
       title: Text(title),
       trailing: Checkbox(
           value: selected,
           onChanged: (val) {
-            update(dayNum, timeNum);
+            update(dayNum, timeNum, courseCode);
           }),
     ),
   );

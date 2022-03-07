@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:app/data/samplemeeting.dart';
 
 class MeetingScreen extends StatefulWidget {
   MeetingScreen({Key? key}) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   }
 
   @override
@@ -80,13 +81,11 @@ class _MeetingScreenState extends State<MeetingScreen> {
   final TextEditingController topicController = TextEditingController();
 
   void recalculateTimeLeft() {
-    minutesLeft = 60 - DateTime.now().difference(startTime).inMinutes;
+    // minutesLeft = 60 - DateTime.now().difference(startTime).inMinutes;
+    minutesLeft = 60 - DateTime.now().difference(startTime).inSeconds;
     if (minutesLeft <= 0) {
       minutesLeft = 0;
-      AlertDialog(
-        title: const Text('Meeting Time is Up!'),
-        actions: [TextButton(onPressed: () {}, child: const Text('Done'))],
-      );
+      Navigator.of(context).pop();
     }
     proportionTimeLeft = 1.0 - ((60.0 - minutesLeft) / 60.0);
   }
@@ -96,7 +95,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
   @override
   Widget build(BuildContext context) {
     if (timeLeft == null) {
-      Timer.periodic(const Duration(minutes: 1), (timer) {
+      timeLeft = Timer.periodic(const Duration(seconds: 1), (timer) {
         setState(() {
           recalculateTimeLeft();
         });
@@ -190,7 +189,13 @@ class _MeetingScreenState extends State<MeetingScreen> {
                         size: const Size(80, 70),
                         child: ElevatedButton(
                           child: const Text('Submit'),
-                          style: ElevatedButton.styleFrom(primary: buttonColor),
+                          style: ElevatedButton.styleFrom(
+                            primary: buttonColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            elevation: 10,
+                          ),
                           onPressed: () {
                             String toAdd = topicController.value.text;
                             if (toAdd != "") {
@@ -216,6 +221,12 @@ class _MeetingScreenState extends State<MeetingScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    timeLeft?.cancel();
+    super.dispose();
   }
 }
 

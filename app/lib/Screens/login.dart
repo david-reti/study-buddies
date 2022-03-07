@@ -1,6 +1,8 @@
 import 'package:app/Screens/courses.dart';
+import 'package:app/Screens/timeslots.dart';
 import 'package:flutter/material.dart';
 import 'package:app/data/sampleusers.dart';
+import 'package:app/models/meeting_time.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -132,14 +134,13 @@ class LoginState extends State<Login> {
                                 if (_key.currentState!.validate()) {
                                   // if password and email are correct we goto Courses screen
                                   if (correctEmail && correctPass) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return Courses();
-                                        },
-                                      ),
-                                    );
+                                    Navigator.pushAndRemoveUntil(context,
+                                        MaterialPageRoute(
+                                      builder: (context) {
+                                        return TimeSlotScreen(
+                                            [MeetingTime(1, 2, "CIS*4030")]);
+                                      },
+                                    ), (route) => false);
                                   }
                                   _key.currentState!.save();
                                 }

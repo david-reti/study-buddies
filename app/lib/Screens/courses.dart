@@ -1,4 +1,5 @@
 import 'package:app/Screens/login.dart';
+import 'package:app/Screens/scheduling.dart';
 import 'package:flutter/material.dart';
 import 'package:app/Screens/register.dart';
 import 'package:flutter/cupertino.dart';
@@ -90,7 +91,7 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                 child: DropdownButton<String>(
                   value: value,
                   iconSize: 36,
-                  icon: Icon(Icons.arrow_drop_down, color: Colors.black),
+                  icon: Icon(Icons.arrow_drop_down, color: backgroundColor),
                   isExpanded: true,
                   items: items.map(buildMenuItem).toList(),
                   onChanged: (value) => setState(() => this.value = value),
@@ -99,7 +100,7 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               //color: Colors.white,
@@ -111,19 +112,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -134,12 +140,17 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
@@ -147,7 +158,7 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
               //color: Colors.white,
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -158,19 +169,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -181,19 +197,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -204,19 +225,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -227,19 +253,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -250,19 +281,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -273,19 +309,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -296,19 +337,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -319,19 +365,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -342,19 +393,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -365,19 +421,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -388,19 +449,24 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),
           Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                border: Border.all(color: boxOutColor, width: 1),
+                border: Border.all(color: boxOutColor, width: 4),
                 borderRadius: BorderRadius.circular((22)),
               ),
               child: ListTile(
@@ -411,12 +477,17 @@ class _ListViewBuilderState extends State<ListViewBuilder> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
                 trailing: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(255, 240, 243, 1.0),
+                    primary: boxOutColor,
                   ),
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text('Join', style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: backgroundColor),
+                  label: Text('Join', style: TextStyle(color: backgroundColor)),
                   //color: Colors.amber,
                 ),
               )),

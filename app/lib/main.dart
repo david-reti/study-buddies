@@ -1,6 +1,5 @@
 import 'package:app/Screens/homepage.dart';
 import 'package:flutter/material.dart';
-import 'Screens/scheduling.dart';
 
 void main() => runApp(MyApp());
 
