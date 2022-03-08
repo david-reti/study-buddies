@@ -1,4 +1,6 @@
+import 'package:app/Screens/groups.dart';
 import 'package:app/Screens/login.dart';
+import 'package:app/Screens/studytopic.dart';
 import 'package:flutter/material.dart';
 import 'package:app/Screens/register.dart';
 
@@ -72,6 +74,56 @@ class HomePage extends StatelessWidget {
                             );
                           },
                           child: Text("Register",
+                              style: TextStyle(color: textColor)))),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: buttonColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            elevation: 10,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return GroupScreen();
+                                },
+                              ),
+                            );
+                          },
+                          child: Text("Groups Screen",
+                              style: TextStyle(color: textColor)))),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: buttonColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            elevation: 10,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return TopicScreen();
+                                },
+                              ),
+                            );
+                          },
+                          child: Text("Topics Screen",
                               style: TextStyle(color: textColor)))),
                 ],
               ),
