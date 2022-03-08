@@ -156,7 +156,7 @@ class RegisterState extends State<Register> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
+                        padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               primary: buttonColor,
