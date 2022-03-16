@@ -265,7 +265,7 @@ Widget studyTopic(String topicName, int numberOfUpvotes, bool upvoted,
                     IconButton(
                       icon: Icon(
                         Icons.arrow_circle_up_outlined,
-                        color: iconColor,
+                        color: crossedOut == false ? iconColor : Colors.black,
                       ),
                       onPressed: () => upVote(topicName),
                     )

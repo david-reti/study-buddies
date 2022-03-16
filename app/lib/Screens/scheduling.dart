@@ -150,9 +150,17 @@ class _SchedulScreenState extends State<ScheduleScreen> {
             children: [
               Expanded(
                 child: ElevatedButton(
-                    onPressed: saveTimeslot,
-                    child: const Text('Save'),
-                    style: ElevatedButton.styleFrom(primary: buttonColor)),
+                    onPressed:
+                        selectedMeetingTimes.isNotEmpty ? saveTimeslot : null,
+                    child: const Padding(
+                        padding: EdgeInsets.all(16), child: Text('Save')),
+                    style: ElevatedButton.styleFrom(
+                      primary: buttonColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      elevation: 10,
+                    )),
               ),
             ],
           ),

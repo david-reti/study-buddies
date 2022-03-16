@@ -5,8 +5,9 @@ const knex = require('knex') ({
     connection: {
         host: '127.0.0.1',
         port: 5432,
-        user: 'studybuddies-app',
-        database: 'studybuddies' 
+        user: process.env['DATABASE_USER'],
+        database: process.env['DATABASE'],
+        password: process.env['DATABASE_PASSWORD'] 
     }
 });
 
