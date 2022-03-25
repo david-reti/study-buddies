@@ -1,6 +1,9 @@
 import 'package:app/Screens/courses.dart';
 import 'package:app/Screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:math';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -38,6 +41,8 @@ class RegisterState extends State<Register> {
   final TextEditingController userPassword = TextEditingController();
   final TextEditingController userName = TextEditingController();
   final TextEditingController verificationCode = TextEditingController();
+  final randomCode = Random().nextInt(1000);
+  var _jsonData = [];
   bool _pwdVisibility = false;
   bool correctName = false;
   bool correctEmail = false;
@@ -74,9 +79,9 @@ class RegisterState extends State<Register> {
                         // the validator is used to error check the users input field, if its correct we proceed otherwise we dont accept input
                         validator: (userName) {
                           if (userName == null || userName.isEmpty) {
-                            return 'Please enter your name';
+                            return 'Error: name cannot be empty';
                           } else if (!isNameValid(userName)) {
-                            return 'Please enter a valid name containing only letters';
+                            return 'Error: only letters are acceptable in this field';
                           } else {
                             // if the users input was correct we come here
                             correctName = true;
@@ -100,10 +105,12 @@ class RegisterState extends State<Register> {
                           labelText: "Email",
                         ),
                         validator: (userEmail) {
-                          if (userEmail == null ||
-                              userEmail.isEmpty ||
-                              !isEmailValid(userEmail)) {
-                            return 'Please enter a University of Guelph email';
+                          if (userEmail == null || userEmail.isEmpty) {
+                            return "Error: email cannot be empty";
+                          } else if (!isEmailValid(userEmail.toString())) {
+                            return 'Error: email needs to be a valid University of Guelph email';
+                          } else if (doesEmailExist(userEmail.toString())) {
+                            return 'Error: email alreay exists';
                           } else {
                             correctEmail = true;
                           }
@@ -142,7 +149,7 @@ class RegisterState extends State<Register> {
                         obscureText: !_pwdVisibility,
                         validator: (userPassword) {
                           if (userPassword == null || userPassword.isEmpty) {
-                            return 'Please enter a password';
+                            return "Error: password cannot be empty";
                           } else {
                             correctPass = true;
                           }
@@ -171,6 +178,8 @@ class RegisterState extends State<Register> {
                                 if (correctName &&
                                     correctEmail &&
                                     correctPass) {
+                                  postUserData();
+                                  //sendEmail();
                                   // if all of the input is correct, we send them an alert dialog
                                   verificationDialog(context);
                                 }
@@ -189,10 +198,72 @@ class RegisterState extends State<Register> {
         ));
   }
 
+  // here an api is used to send a custom-made email to the user containing their verfication code
+  Future sendEmail() async {
+    final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+    final response = await http.post(
+      url,
+      headers: {
+        'origin': 'http://localhost',
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'service_id': 'service_eabt87l',
+        'template_id': 'template_49e7gj3',
+        'user_id': 'MO28iMsokWQMd98T8',
+        'template_params': {
+          'user_name': userName.text,
+          'user_email': userEmail.text,
+          'user_message': randomCode
+        }
+      }),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUserData();
+  }
+
+  // in this function, we send a http post request and send the data inputted from the user back to the server
+  void postUserData() async {
+    final response = await http.post(Uri.parse('http://3.97.30.243:3002/users'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode({
+          "name": userName.text,
+          "email": userEmail.text,
+          "password": userPassword.text,
+        }));
+  }
+
   // the email needs to be a valid University of Guelph email
   bool isEmailValid(String email) {
     email = email.toLowerCase();
     return email.endsWith("@uoguelph.ca");
+  }
+
+  // we verify if the email already exists on the server
+  bool doesEmailExist(String email) {
+    for (int i = 0; i < _jsonData.length; i++) {
+      if (_jsonData[i]["email"] == email) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // in this function, we send a http get request and retrieve the data from the server
+  void getUserData() async {
+    final response = await http.get(Uri.parse('http://3.97.30.243:3002/users'));
+
+    final jsonData = jsonDecode(response.body) as List;
+
+    setState(() {
+      _jsonData = jsonData;
+    });
   }
 
   // their name needs to be only consisting of letters
@@ -202,6 +273,7 @@ class RegisterState extends State<Register> {
 
   Future<void> verificationDialog(BuildContext context) async {
     return showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (context) {
           return StatefulBuilder(builder: (context, setState) {
@@ -211,7 +283,7 @@ class RegisterState extends State<Register> {
               content: TextField(
                 controller: verificationCode,
                 decoration: InputDecoration(
-                  errorText: _correctCode ? "Code cannot be empty" : null,
+                  errorText: _correctCode ? "Invalid code" : null,
                   prefixIcon: Icon(Icons.vpn_key),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
@@ -229,12 +301,14 @@ class RegisterState extends State<Register> {
                       elevation: 10,
                     ),
                     onPressed: () {
+                      print(randomCode);
                       setState(() {
-                        verificationCode.text.isEmpty
+                        verificationCode.text.isEmpty ||
+                                verificationCode.text != randomCode.toString()
                             ? _correctCode = true
                             : _correctCode = false;
                       });
-                      // as a dummy feature, any text entered in the textfield will work and navigate the user to Courses screen
+                      // if the verfication code entered by user is correct
                       if (!_correctCode) {
                         Navigator.push(
                           context,
