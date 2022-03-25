@@ -22,9 +22,10 @@ Bookshelf.BookShelf.model('Course', {
 });
 
 function createUser(table) {
-    table.increments();
-    table.text('email', 256).notNullable();
-    table.text('password', 64).notNullable();
+    table.increments('id');
+    table.string('name');
+    table.string('email');
+    table.string('password');
 }
 
 Bookshelf.BookShelf.model('User', {
