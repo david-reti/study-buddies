@@ -3,8 +3,6 @@ import 'package:app/Screens/timeslots.dart';
 import 'package:flutter/material.dart';
 import 'package:app/data/sampleusers.dart';
 import 'package:app/models/meeting_time.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -40,9 +38,9 @@ class LoginState extends State<Login> {
   final TextEditingController userEmail = TextEditingController();
   final TextEditingController userPassword = TextEditingController();
   bool _pwdVisibility = false;
-  var _jsonData = [];
   bool correctEmail = false;
   bool correctPass = false;
+  List users = sampleusers;
   Color buttonColor = const Color(0xffFF4D6D);
   Color textColor = const Color(0xffFFF0F3);
 
@@ -70,10 +68,8 @@ class LoginState extends State<Login> {
                             labelText: "Email",
                           ),
                           validator: (userEmail) {
-                            if (userEmail == null || userEmail.isEmpty) {
-                              return "Error: email cannot be empty";
-                            } else if (!isEmailValid(userEmail.toString())) {
-                              return 'Error: email not found';
+                            if (!isEmailValid(userEmail.toString())) {
+                              return 'Error email not found';
                             } else {
                               correctEmail = true;
                             }
@@ -110,11 +106,8 @@ class LoginState extends State<Login> {
                           ),
                           obscureText: !_pwdVisibility,
                           validator: (userPassword) {
-                            if (userPassword == null || userPassword.isEmpty) {
-                              return "Error: password cannot be empty";
-                            } else if (!isPasswordValid(
-                                userPassword.toString(), userEmail.text)) {
-                              return 'Error: incorrect password';
+                            if (!isPasswordValid(userPassword.toString())) {
+                              return 'Incorrect password';
                             } else {
                               correctPass = true;
                             }
@@ -139,7 +132,7 @@ class LoginState extends State<Login> {
                               ),
                               onPressed: () {
                                 if (_key.currentState!.validate()) {
-                                  // if password and email are correct we goto the next screen
+                                  // if password and email are correct we goto Courses screen
                                   if (correctEmail && correctPass) {
                                     Navigator.pushAndRemoveUntil(context,
                                         MaterialPageRoute(
@@ -163,39 +156,20 @@ class LoginState extends State<Login> {
         ));
   }
 
-  // in this function, we send a http get request and retrieve the data from the server
-  void getUserData() async {
-    final response = await http.get(Uri.parse('http://3.97.30.243:3002/users'));
-
-    final jsonData = jsonDecode(response.body) as List;
-
-    setState(() {
-      _jsonData = jsonData;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getUserData();
-  }
-
-  // in this function we check to see if the email the user is logging in with exists in our server
+  // used to check if email is present in our dummy database (sampleusers.dart)
   bool isEmailValid(String email) {
-    for (int i = 0; i < _jsonData.length; i++) {
-      if (_jsonData[i]["email"] == email) {
+    for (int i = 0; i < sampleusers.length; i++) {
+      if (sampleusers[i]["email"] == email) {
         return true;
       }
     }
     return false;
   }
 
-  // in this function we check to see if the password the user is logging in with exists in our server and
-  // if the password matches the email associated with it
-  bool isPasswordValid(String password, String email) {
-    for (int i = 0; i < _jsonData.length; i++) {
-      if (_jsonData[i]["password"] == password &&
-          _jsonData[i]["email"] == email) {
+  // used to check if password is present in our dummy database (sampleusers.dart)
+  bool isPasswordValid(String password) {
+    for (int i = 0; i < sampleusers.length; i++) {
+      if (sampleusers[i]["password"] == password) {
         return true;
       }
     }
