@@ -179,7 +179,7 @@ class RegisterState extends State<Register> {
                                     correctEmail &&
                                     correctPass) {
                                   postUserData();
-                                  //sendEmail();
+                                  sendEmail();
                                   // if all of the input is correct, we send them an alert dialog
                                   verificationDialog(context);
                                 }
@@ -301,7 +301,6 @@ class RegisterState extends State<Register> {
                       elevation: 10,
                     ),
                     onPressed: () {
-                      print(randomCode);
                       setState(() {
                         verificationCode.text.isEmpty ||
                                 verificationCode.text != randomCode.toString()
