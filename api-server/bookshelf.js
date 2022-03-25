@@ -14,3 +14,5 @@ const knex = require('knex') ({
 });
 
 const bookshelf = require('bookshelf')(knex);
+module.exports.BookShelf = bookshelf; 
+module.exports.knex = knex;
