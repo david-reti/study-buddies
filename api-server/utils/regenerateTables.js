@@ -3,7 +3,7 @@ const BookShelf = require('../bookshelf');
 const Models = require('../models');
 
 async function loadSampleData(modelName) {
-    let data = JSON.parse(fs.readFileSync(`./sampleData/${modelName.toLowerCase()}.js`));
+    let data = JSON.parse(fs.readFileSync(`./sampleData/${modelName.toLowerCase()}.json`));
     for(let i = 0; i < data.length; i++) await BookShelf.BookShelf.model(modelName).forge(data[i]).save();
 }
 
