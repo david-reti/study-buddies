@@ -2,7 +2,6 @@ const Bookshelf = require('./bookshelf');
 const express = require('express');
 const scheduling = require('./scheduling');
 var bodyParser = require('body-parser');
-var tableValues = require('../api-server/userstable');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -10,8 +9,6 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 const port = process.env.PORT;
-
-console.log(tableValues);
 
 
 app.get('/', (req, res) => {
@@ -36,13 +33,15 @@ app.get('/user/:id/scheduled-timeslots', async (req, res) => {
     }
 });
 
+// fetch all of the users in the server
 app.get('/users', async (req, res) => {
     let userTable = await Bookshelf.BookShelf.model('User').fetchAll();
     res.json(userTable);
 });
 
+// create a new user based on the information passed when the user is registrating
 app.post('/users', async (req, res) => {
-     Bookshelf.BookShelf.model('User').forge({
+    Bookshelf.BookShelf.model('User').forge({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
