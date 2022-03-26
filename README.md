@@ -31,7 +31,7 @@ It is recommended to use our library, [Bookshelf](https://bookshelfjs.org/index.
 
 ### Regenerating Tables
 
-In development, it's very useful to wipe all the tables and generate them again - either becuase you are running it for the first time and you want to generate the tables, or you modified the schema and want to see the changes, or because you want to get rid of all the data in the database. This is simple: just run `node utils/regenerateTables.js` and it will recreate all the tables in your database.
+In development, it's very useful to wipe all the tables and generate them again - either becuase you are running it for the first time and you want to generate the tables, or you modified the schema and want to see the changes, or because you want to get rid of all the data in the database. This is simple: just use the script for this purpose: `yarn run regen` and it will recreate all the tables in your database.
 
 ### Creating Tables
 

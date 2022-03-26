@@ -10,5 +10,8 @@
     "express": "^4.17.2",
     "knex": "^1.0.3",
     "pg": "^8.7.3"
+  },
+  "scripts": {
+    "regen": "node utils/regenerateTables.js"
   }
 }

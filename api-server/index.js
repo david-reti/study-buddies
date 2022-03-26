@@ -1,15 +1,11 @@
 const Bookshelf = require('./bookshelf');
 const express = require('express');
 const scheduling = require('./scheduling');
-var bodyParser = require('body-parser');
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(express.json());
 
 const port = process.env.PORT;
-
 
 app.get('/', (req, res) => {
     res.send('Hello, World!');
