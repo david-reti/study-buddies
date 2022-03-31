@@ -1,9 +1,11 @@
-const Bookshelf = require('./bookshelf');
 const express = require('express');
+const Bookshelf = require('./bookshelf');
 const scheduling = require('./scheduling');
+const WebSockets = require('./websockets');
 
 const app = express();
 app.use(express.json());
+const ws = WebSockets.initialiseWebsockets(app);
 
 const port = process.env.PORT;
 
