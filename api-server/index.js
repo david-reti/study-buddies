@@ -1,6 +1,7 @@
 const Bookshelf = require('./bookshelf');
 const express = require('express');
 const scheduling = require('./scheduling');
+const { createCourse } = require('./models');
 
 const app = express();
 app.use(express.json());
@@ -34,6 +35,12 @@ app.get('/users', async (req, res) => {
     let userTable = await Bookshelf.BookShelf.model('User').fetchAll();
     res.json(userTable);
 });
+
+//fetch all courses offered
+app.get('/course', async (req, res) => {
+    let courseTable = await Bookshelf.BookShelf.model('Course').fetchAll();
+    res.json(courseTable)
+})
 
 // create a new user based on the information passed when the user is registrating
 app.post('/users', async (req, res) => {

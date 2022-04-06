@@ -3,6 +3,8 @@ import 'package:app/Screens/scheduling.dart';
 import 'package:flutter/material.dart';
 import 'package:app/Screens/register.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart' as http;
+
 
 class Courses extends StatefulWidget {
   @override
@@ -13,6 +15,8 @@ class Courses extends StatefulWidget {
 }
 
 class _CoursesState extends State<Courses> {
+  var _jsonData = [];
+  
   final items = [
     'Accounting',
     'Agriculture',
@@ -22,6 +26,17 @@ class _CoursesState extends State<Courses> {
     'Computing',
   ];
   final Color themeColor = const Color(0xffFF4D6D);
+
+  // in this function, we send a http get request and retrieve the data from the server
+  void getCourseData() async {
+    final response = await http.get(Uri.parse('http://3.97.30.243:3002/courses'));
+
+    final jsonData = jsonDecode(response.body) as List;
+
+    setState(() {
+      _jsonData = jsonData;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
