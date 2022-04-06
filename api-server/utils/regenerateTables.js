@@ -15,5 +15,6 @@ async function loadSampleData(modelName) {
     
     // Load sample data
     await loadSampleData('User');
+    await loadSampleData('ScheduledTimeslot');
     process.exit();
 })();
