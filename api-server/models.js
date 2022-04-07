@@ -62,26 +62,26 @@ function createGroup(table) {
     table.text('groupID');
     table.text('courseID');
     table.text('timeslot');
+    table.string('name');
 }
 
 Bookshelf.BookShelf.model('Group', {
     tableName: 'group'
 });
 
-//*GROUPS TABLE
-function createGroupUser(table) {
+function createMemberGroup(table) {
     table.increments('id');
     table.integer('userID');
-    table.text('groupID');
+    table.integer('groupID');
 }
 
-Bookshelf.BookShelf.model('GroupUser', {
-    tableName: 'groupuser'
+Bookshelf.BookShelf.model('MemberGroup', {
+    tableName: 'membergroup'
 });
 
 exports.createUser = createUser;
 exports.createCourse = createCourse;
 exports.createScheduledTimeslot = createScheduledTimeslot;
-exports.createStudyTopic = createStudyTopic;
 exports.createGroup = createGroup;
-exports.createGroupUser = createGroupUser;
+exports.createMemberGroup = createMemberGroup;
+

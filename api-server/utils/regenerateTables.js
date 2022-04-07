@@ -12,7 +12,8 @@ async function loadSampleData(modelName) {
     await BookShelf.knex.schema.dropTableIfExists('course').createTable('course', Models.createCourse).catch(err => console.error(err));
     await BookShelf.knex.schema.dropTableIfExists('user').createTable('user', Models.createUser).catch(err => console.error(err));
     await BookShelf.knex.schema.dropTableIfExists('scheduledtimeslot').createTable('scheduledtimeslot', Models.createScheduledTimeslot).catch(err => console.error(err));
-
+    await BookShelf.knex.schema.dropTableIfExists('group').createTable('group', Models.createGroup).catch(err => console.error(err));
+    await BookShelf.knex.schema.dropTableIfExists('membergroup').createTable('membergroup', Models.createMemberGroup).catch(err => console.error(err));
     // Load sample data
     await loadSampleData('User');
     await loadSampleData('Course');
