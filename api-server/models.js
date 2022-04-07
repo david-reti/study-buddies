@@ -46,6 +46,42 @@ Bookshelf.BookShelf.model('ScheduledTimeslot', {
     }
 });
 
+//*STUDY TOPICS TABLE
+function createStudyTopic(table) {
+    table.increments('id');
+    table.text('topicID');
+}
+
+Bookshelf.BookShelf.model('StudyTopic', {
+    tableName: 'studytopic'
+});
+
+//*GROUPS TABLE
+function createGroup(table) {
+    table.increments('id');
+    table.text('groupID');
+    table.text('courseID');
+    table.text('timeslot');
+}
+
+Bookshelf.BookShelf.model('Group', {
+    tableName: 'group'
+});
+
+//*GROUPS TABLE
+function createGroupUser(table) {
+    table.increments('id');
+    table.integer('userID');
+    table.text('groupID');
+}
+
+Bookshelf.BookShelf.model('GroupUser', {
+    tableName: 'groupuser'
+});
+
 exports.createUser = createUser;
 exports.createCourse = createCourse;
 exports.createScheduledTimeslot = createScheduledTimeslot;
+exports.createStudyTopic = createStudyTopic;
+exports.createGroup = createGroup;
+exports.createGroupUser = createGroupUser;
