@@ -37,8 +37,7 @@ class HomePage extends StatelessWidget {
                           ),
                           onPressed: () {
                             // if login is presssed, we route to LoginScreen
-                            Navigator.push(
-                              context,
+                            Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
                                   return const LoginScreen();

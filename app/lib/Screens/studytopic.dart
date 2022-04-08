@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app/data/sampleusers.dart';
 
 List tmpTopics = ["Algebra", "Calculus", "Programming"];
 List tmpTopicsVotes = [0, 0, 0];
@@ -182,9 +181,9 @@ class TopicState extends State<Topic> {
                           size: 35,
                         ),
                         onPressed: () {
-                          tmpTopicsVotes[index] = tmpTopicsVotes[index] + 1;
-                          print("Topic up-voted.");
-                          setState(() {});
+                          setState(() {
+                            tmpTopicsVotes[index] = tmpTopicsVotes[index] + 1;
+                          });
                         },
                       ),
                     ),

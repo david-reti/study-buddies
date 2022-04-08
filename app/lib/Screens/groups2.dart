@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app/data/sampleusers.dart';
 
 List tmpGrps = [
   "CIS 4030",

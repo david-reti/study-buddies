@@ -2,15 +2,13 @@ import 'dart:async';
 import 'package:app/Screens/courses.dart';
 import 'package:app/Screens/homepage.dart';
 import 'package:app/Screens/meeting.dart';
-import 'package:app/models/meeting_time.dart';
+import 'package:app/models/timeslot_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:app/data/sampletimes.dart';
+import 'package:provider/provider.dart';
 
 class TimeSlotScreen extends StatefulWidget {
-  TimeSlotScreen(this.userTimeslots);
-
-  List<MeetingTime> userTimeslots = [MeetingTime(1, 2, "CIS*4030")];
-  String semesterName = "Winter 2022";
+  const TimeSlotScreen({Key? key}) : super(key: key);
 
   @override
   State<TimeSlotScreen> createState() => _TimeslotScreenState();
@@ -21,13 +19,7 @@ class _TimeslotScreenState extends State<TimeSlotScreen> {
   Color buttonColor = const Color(0xffFF4D6D);
 
   Widget build(BuildContext context) {
-    if (timeUntilMeeting == null) {
-      timeUntilMeeting = Timer(const Duration(seconds: 15), () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => MeetingScreen()));
-      });
-    }
-
+    Provider.of<TimeslotProvider>(context, listen: false).pushContext(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -51,9 +43,11 @@ class _TimeslotScreenState extends State<TimeSlotScreen> {
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Padding(
               padding: EdgeInsets.fromLTRB(8, 16, 0, 16),
-              child: Text(
-                widget.semesterName,
-                style: TextStyle(fontSize: 32),
+              child: Consumer<TimeslotProvider>(
+                builder: (context, value, child) => Text(
+                  value.semesterName,
+                  style: TextStyle(fontSize: 32),
+                ),
               ),
             ),
             Padding(
@@ -72,12 +66,14 @@ class _TimeslotScreenState extends State<TimeSlotScreen> {
             ),
           ]),
           Expanded(
-            child: ListView(
-              children: [
-                for (int i = 0; i < widget.userTimeslots.length; i++)
-                  timeSlotTile(
-                      "${widget.userTimeslots[i].title} - ${dayNames[widget.userTimeslots[i].dayNum]} ${timeslotNames[widget.userTimeslots[i].timeNum]}")
-              ],
+            child: Consumer<TimeslotProvider>(
+              builder: (context, value, child) => ListView(
+                children: [
+                  for (int i = 0; i < value.userTimeslots.length; i++)
+                    timeSlotTile(
+                        "${value.userTimeslots[i].title} - ${dayNames[value.userTimeslots[i].dayNum]} ${timeslotNames[value.userTimeslots[i].timeNum]}")
+                ],
+              ),
             ),
           ),
         ],

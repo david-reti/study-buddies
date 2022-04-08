@@ -85,7 +85,6 @@ class _MeetingScreenState extends State<MeetingScreen> {
     minutesLeft = 60 - DateTime.now().difference(startTime).inSeconds;
     if (minutesLeft <= 0) {
       minutesLeft = 0;
-      Navigator.of(context).pop();
     }
     proportionTimeLeft = 1.0 - ((60.0 - minutesLeft) / 60.0);
   }

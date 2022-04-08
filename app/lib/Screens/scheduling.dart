@@ -1,10 +1,13 @@
 import 'package:app/Screens/timeslots.dart';
+import 'package:app/models/timeslot_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:app/data/sampletimes.dart';
 import 'package:app/models/meeting_time.dart';
+import 'package:provider/provider.dart';
 
 class ScheduleScreen extends StatefulWidget {
-  const ScheduleScreen({Key? key}) : super(key: key);
+  String _courseTitle = "";
+  ScheduleScreen(this._courseTitle, {Key? key}) : super(key: key);
 
   @override
   State<ScheduleScreen> createState() => _SchedulScreenState();
@@ -30,10 +33,9 @@ class _SchedulScreenState extends State<ScheduleScreen> {
   void saveTimeslot() {
     // Generate query to API here
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-            builder: (context) => TimeSlotScreen(
-                [MeetingTime(1, 2, "CIS*4030")] + selectedMeetingTimes)),
-        (context) => false);
+        MaterialPageRoute(builder: (context) {
+      return const TimeSlotScreen();
+    }), (context) => false);
   }
 
   List<Widget> availableTimes = [];
@@ -47,28 +49,28 @@ class _SchedulScreenState extends State<ScheduleScreen> {
         toReturn.add(timeSlotTile(
             updateTimeslot,
             "${dayNames[i]} Morning (10:30 - 11:30)",
-            "CIS*2030",
+            widget._courseTitle,
             timeslotSelected(i, 0),
             i,
             0));
         toReturn.add(timeSlotTile(
             updateTimeslot,
             "${dayNames[i]} Afternoon (2:30 - 3:30)",
-            "CIS*2030",
+            widget._courseTitle,
             timeslotSelected(i, 1),
             i,
             1));
         toReturn.add(timeSlotTile(
             updateTimeslot,
             "${dayNames[i]} Evening (5:30 - 6:30)",
-            "CIS*2030",
+            widget._courseTitle,
             timeslotSelected(i, 2),
             i,
             2));
         toReturn.add(timeSlotTile(
             updateTimeslot,
             "${dayNames[i]} Night (8:30 - 9:30)",
-            "CIS*2030",
+            widget._courseTitle,
             timeslotSelected(i, 3),
             i,
             3));
@@ -149,9 +151,15 @@ class _SchedulScreenState extends State<ScheduleScreen> {
           Row(
             children: [
               Expanded(
-                child: ElevatedButton(
-                    onPressed:
-                        selectedMeetingTimes.isNotEmpty ? saveTimeslot : null,
+                child: Consumer<TimeslotProvider>(
+                  builder: (context, value, child) => ElevatedButton(
+                    onPressed: selectedMeetingTimes.isNotEmpty
+                        ? () async {
+                            await value.add(selectedMeetingTimes[0].title,
+                                "0${selectedMeetingTimes[0].dayNum}0${selectedMeetingTimes[0].timeNum}");
+                            saveTimeslot();
+                          }
+                        : null,
                     child: const Padding(
                         padding: EdgeInsets.all(16), child: Text('Save')),
                     style: ElevatedButton.styleFrom(
@@ -160,7 +168,9 @@ class _SchedulScreenState extends State<ScheduleScreen> {
                         borderRadius: BorderRadius.circular(25),
                       ),
                       elevation: 10,
-                    )),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
