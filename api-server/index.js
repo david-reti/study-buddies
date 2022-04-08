@@ -112,9 +112,6 @@ app.get('/user/:id/groups', async (req, res) => {
     //Returns all groups the user is in from MemberGroup table
     let newgroup = group.serialize();
 
-    console.log("New GROUP: ", newgroup[0].groupID);
-    console.log("len of GROUP: ", newgroup.length);
-
     if (group.length == 0) {
         res.json({ "message": "404" });
     }
@@ -141,8 +138,6 @@ app.get('/user/:id/groups', async (req, res) => {
             }
         }
 
-        console.log("Member Records: ", memberRecords);
-
         for (let j = 0; j < memberRecords.length; j++) {
             nameRecords.push(memberRecords[j][0].name);
         }
@@ -160,6 +155,8 @@ app.post('/group/join', async (req, res) => {
 
     let temp = await Bookshelf.BookShelf.model('Group').where({ "timeslot": userData.timeslot }).fetchAll();
 
+    console.log("USER ID", req.params.id);
+
     let userAdded = false;
 
     let groupTables = temp.serialize();
@@ -168,7 +165,11 @@ app.post('/group/join', async (req, res) => {
 
     if (groupTables.length != 0) {
         for (let i = 0; groupTables && i < groupTables.length; i++) {
-            console.log(groupTables[i]);
+
+            if (await Bookshelf.BookShelf.model('MemberGroup').where({ "groupID": groupTables[i].id, "userID": req.body.userID }).count() > 0) {
+                userAdded = true;
+                break;
+            }
             if (await Bookshelf.BookShelf.model('MemberGroup').where({ "groupID": groupTables[i].id }).count() < 5) {
 
                 Bookshelf.BookShelf.model('MemberGroup').forge({
@@ -197,7 +198,6 @@ app.post('/group/join', async (req, res) => {
                 userID: userData.userID,
                 groupID: groupid
             }).save().then(function (u) {
-                console.log('User saved:', groupid);
             });
 
         });
