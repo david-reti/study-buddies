@@ -1,372 +1,372 @@
 [
     {
-        "course_code": "CIS-1000",
-        "course_name": "Introduction to Computer Applications",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-1000",
+        "fullname": "Introduction to Computer Applications",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-1200",
-        "course_name": "Introduction to Computing",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-1200",
+        "fullname": "Introduction to Computing",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-1250",
-        "course_name": "Software Design I",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-1250",
+        "fullname": "Software Design I",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-1500",
-        "course_name": "Introduction to Programming",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-1500",
+        "fullname": "Introduction to Programming",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-1910",
-        "course_name": "Discrete Structures in Computing I",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-1910",
+        "fullname": "Discrete Structures in Computing I",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2030",
-        "course_name": "Structures and Applications of Microcomputers",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2030",
+        "fullname": "Structures and Applications of Microcomputers",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2050",
-        "course_name": "Computers and Society",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2050",
+        "fullname": "Computers and Society",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2130",
-        "course_name": "Discrete Mathematics for Computer Science",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2130",
+        "fullname": "Discrete Mathematics for Computer Science",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2170",
-        "course_name": "User Interface Design",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2170",
+        "fullname": "User Interface Design",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2250",
-        "course_name": "Software Design II",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2250",
+        "fullname": "Software Design II",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2430",
-        "course_name": "Object Oriented Programming",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2430",
+        "fullname": "Object Oriented Programming",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2460",
-        "course_name": "Modelling of Computer Systems",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2460",
+        "fullname": "Modelling of Computer Systems",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2500",
-        "course_name": "Intermediate Programming",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2500",
+        "fullname": "Intermediate Programming",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2520",
-        "course_name": "Data Structures",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2520",
+        "fullname": "Data Structures",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2750",
-        "course_name": "Software Systems Development and Integration",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2750",
+        "fullname": "Software Systems Development and Integration",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-2910",
-        "course_name": "Discrete Structures in Computing",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-2910",
+        "fullname": "Discrete Structures in Computing",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3000",
-        "course_name": "Social Implications of Computing",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3000",
+        "fullname": "Social Implications of Computing",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3110",
-        "course_name": "Operating Systems",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3110",
+        "fullname": "Operating Systems",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3120",
-        "course_name": "Digital Systems I",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3120",
+        "fullname": "Digital Systems I",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3150",
-        "course_name": "Theory of Computation",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3150",
+        "fullname": "Theory of Computation",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3190",
-        "course_name": "Software for Legacy Systems",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3190",
+        "fullname": "Software for Legacy Systems",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3210",
-        "course_name": "Computer Networks",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3210",
+        "fullname": "Computer Networks",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3250",
-        "course_name": "Software Design III",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3250",
+        "fullname": "Software Design III",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3260",
-        "course_name": "Software Design IV",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3260",
+        "fullname": "Software Design IV",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3490",
-        "course_name": "The Analysis and Design of Computer Algorithms",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3490",
+        "fullname": "The Analysis and Design of Computer Algorithms",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3530",
-        "course_name": "Data Base Systems and Concepts",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3530",
+        "fullname": "Data Base Systems and Concepts",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3700",
-        "course_name": "Introduction to Intelligent Systems",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3700",
+        "fullname": "Introduction to Intelligent Systems",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3750",
-        "course_name": "System Analysis and Design in Applications",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3750",
+        "fullname": "System Analysis and Design in Applications",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-3760",
-        "course_name": "Software  Engineering",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-3760",
+        "fullname": "Software  Engineering",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4050",
-        "course_name": "Digital Systems II",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4050",
+        "fullname": "Digital Systems II",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4110",
-        "course_name": "Computer Security",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4110",
+        "fullname": "Computer Security",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4150",
-        "course_name": "Software Reliability and Testing",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4150",
+        "fullname": "Software Reliability and Testing",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4250",
-        "course_name": "Software Design V",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4250",
+        "fullname": "Software Design V",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4300",
-        "course_name": "Human Computer Interaction",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4300",
+        "fullname": "Human Computer Interaction",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4410",
-        "course_name": "Trends in Distributed Systems",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4410",
+        "fullname": "Trends in Distributed Systems",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4430",
-        "course_name": "Information Organization and Retrieval",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4430",
+        "fullname": "Information Organization and Retrieval",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4450",
-        "course_name": "Special Topics in Information Science",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4450",
+        "fullname": "Special Topics in Information Science",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4500",
-        "course_name": "Special Topics in Computing Science",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4500",
+        "fullname": "Special Topics in Computing Science",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4650",
-        "course_name": "Compilers",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4650",
+        "fullname": "Compilers",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4720",
-        "course_name": "Image Processing and Vision",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4720",
+        "fullname": "Image Processing and Vision",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4780",
-        "course_name": "Computational Intelligence",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4780",
+        "fullname": "Computational Intelligence",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4800",
-        "course_name": "Computer Graphics",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4800",
+        "fullname": "Computer Graphics",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4820",
-        "course_name": "Game Programming",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4820",
+        "fullname": "Game Programming",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4900",
-        "course_name": "Computer Science Project",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4900",
+        "fullname": "Computer Science Project",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "CIS-4910",
-        "course_name": "Computer Science Thesis",
-        "course_dept": "Computing and Information Science"
+        "coursecode": "CIS-4910",
+        "fullname": "Computer Science Thesis",
+        "department": "Computing and Information Science"
     },
     {
-        "course_code": "POLS-1150",
-        "course_name": "Understanding Politics",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-1150",
+        "fullname": "Understanding Politics",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-1400",
-        "course_name": "Issues in Canadian Politics",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-1400",
+        "fullname": "Issues in Canadian Politics",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-1500",
-        "course_name": "World Politics",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-1500",
+        "fullname": "World Politics",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-2000",
-        "course_name": "Political Theory",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-2000",
+        "fullname": "Political Theory",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-2080",
-        "course_name": "Development and Underdevelopment",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-2080",
+        "fullname": "Development and Underdevelopment",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-2100",
-        "course_name": "Comparative Politics",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-2100",
+        "fullname": "Comparative Politics",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-2150",
-        "course_name": "Gender and Politics",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-2150",
+        "fullname": "Gender and Politics",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-2200",
-        "course_name": "International Relations",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-2200",
+        "fullname": "International Relations",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-2250",
-        "course_name": "Public Administration and Governance",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-2250",
+        "fullname": "Public Administration and Governance",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-2300",
-        "course_name": "Canadian Government and Politics",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-2300",
+        "fullname": "Canadian Government and Politics",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-2350",
-        "course_name": "Law from a Political Science Perspective",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-2350",
+        "fullname": "Law from a Political Science Perspective",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3000",
-        "course_name": "Politics of Africa",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3000",
+        "fullname": "Politics of Africa",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3050",
-        "course_name": "Canadian Political Parties, Elections and Pressure Groups",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3050",
+        "fullname": "Canadian Political Parties, Elections and Pressure Groups",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3060",
-        "course_name": "Politics of the Middle East and North Africa",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3060",
+        "fullname": "Politics of the Middle East and North Africa",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3080",
-        "course_name": "Politics of Latin America",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3080",
+        "fullname": "Politics of Latin America",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3130",
-        "course_name": "Law, Politics and Judicial Process",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3130",
+        "fullname": "Law, Politics and Judicial Process",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3140",
-        "course_name": "Politics and the Charter of Rights",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3140",
+        "fullname": "Politics and the Charter of Rights",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3160",
-        "course_name": "Women and Politics in the Third World",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3160",
+        "fullname": "Women and Politics in the Third World",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3180",
-        "course_name": "Research Methods I: Political Inquiry and Methods",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3180",
+        "fullname": "Research Methods I: Political Inquiry and Methods",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3210",
-        "course_name": "The Constitution and Canadian Federalism",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3210",
+        "fullname": "The Constitution and Canadian Federalism",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3230",
-        "course_name": "Modern Political Thought",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3230",
+        "fullname": "Modern Political Thought",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3250",
-        "course_name": "Public Policy: Challenges and Prospects",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3250",
+        "fullname": "Public Policy: Challenges and Prospects",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3270",
-        "course_name": "Local Government in Ontario",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3270",
+        "fullname": "Local Government in Ontario",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3300",
-        "course_name": "Governing Criminal Justice",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3300",
+        "fullname": "Governing Criminal Justice",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3320",
-        "course_name": "Politics of Aid & Development",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3320",
+        "fullname": "Politics of Aid & Development",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3370",
-        "course_name": "Environmental Politics and Governance",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3370",
+        "fullname": "Environmental Politics and Governance",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-3410",
-        "course_name": "U.S. Politics and Government",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-3410",
+        "fullname": "U.S. Politics and Government",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-4070",
-        "course_name": "Courts and Parliament",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-4070",
+        "fullname": "Courts and Parliament",
+        "department": "Political Science"
     },
     {
-        "course_code": "POLS-4100",
-        "course_name": "Women, Justice and Public Policy",
-        "course_dept": "Political Science"
+        "coursecode": "POLS-4100",
+        "fullname": "Women, Justice and Public Policy",
+        "department": "Political Science"
     }
 ]

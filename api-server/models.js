@@ -11,14 +11,14 @@ const Bookshelf = require('./bookshelf');
 // When you call Bookshelf.Bookshelf.model without passing in params, it will instead retrieve the models (which is what we do in different files)
 
 function createCourse(table) {
-    table.increments();
-    table.text('fullname');
-    table.text('coursecode');
-    table.text('department');
+    table.increments('id');
+    table.string('fullname');
+    table.string('coursecode');
+    table.string('department');
 }
 
 Bookshelf.BookShelf.model('Course', {
-    tablename: 'course'
+    tableName: 'course'
 });
 
 function createUser(table) {
