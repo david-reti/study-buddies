@@ -48,4 +48,32 @@ module.exports.schedule_user = async (userID, courseID, timeslot) => {
 
     return {"message" : "OK", "timeslot": await Bookshelf.BookShelf.model('ScheduledTimeslot').where({"userID": userID, "courseID": courseID, "timeslot": timeslot}).fetch()};
 }
+
+module.exports.nextTimeslot = timeslots => {
+    // Sort the timeslots to find the next one
+    let timeslotsToSort = Array.from(timeslots);
+    timeslotsToSort.sort((a, b) => {
+        // let t1_day = parseInt(a.slice(0, 2));
+        // let t1_time = parseInt(a.slice(2));
+        // let t2_day = parseInt(b.slice(0, 2));
+        // let t2_time = parseInt(b.slice(2));
+
+        // if(t1_day < today) {
+        //     t1_day += 7;
+        // }
+
+        // if(t2_day < today) {
+        //     t2_day += 7;
+        // }
+
+        // if(Math.abs(t1_day - today) < Math.abs(t2_day - today)) {
+        //     return -1;
+        // } else if(Math.abs(t1_day - today) > Math.abs(t2 - today)) {
+        //     return 1;
+        // }
+
+        return 0;
+    });
+    return timeslotsToSort[0];
+}
 exports.DAY_TIMES = DAY_TIMES;

@@ -1,6 +1,6 @@
 [
     {
-        "userID": 1,
+        "userID": "1",
         "courseID": "CIS*2750",
         "timeslot": "0102"
     }

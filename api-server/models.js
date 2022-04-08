@@ -34,16 +34,13 @@ Bookshelf.BookShelf.model('User', {
 
 function createScheduledTimeslot(table) {
     table.increments('id');
-    table.integer('userID');
+    table.text('userID');
     table.text('courseID');
     table.string('timeslot');
 }
 
 Bookshelf.BookShelf.model('ScheduledTimeslot', {
-    tableName: 'scheduledtimeslot',
-    userID() {
-        return this.belongsTo('User', 'userid', 'id');
-    }
+    tableName: 'scheduledtimeslot'
 });
 
 //*STUDY TOPICS TABLE
